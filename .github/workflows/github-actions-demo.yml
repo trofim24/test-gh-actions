@@ -6,9 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        name: Checkout private repo
         with:
           repository: trofim24/test-gh-actions-private
           token: ${{ secrets.GH_PAT }}
+          path: test-gh-actions-private
+      - name: List files in the private repository
+        run: |
+          ls test-gh-actions-private
 
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
