@@ -15,7 +15,7 @@ on:
 
 env:
   url: ${{github.event.inputs.url}}
-  SELECTED_URL: ${{ github.event.inputs.url == 'release' && secrets.URL_RELEASE || github.event.inputs.url == 'hotfix' && secrets.URL_HOTFIX || secrets.URL_DEVELOP }}
+  SELECTED_URL: ${{ github.event.inputs.url == 'release' && 'release-var' || github.event.inputs.url == 'hotfix' && 'hotfix-var' || 'develop-var' }}
 
 jobs:
   puppeteer-docserver:
