@@ -13,3 +13,20 @@ jobs:
         with:
           version: '5.13.2'
           target: 'android'
+
+      - name: Checkout build_tools
+        uses: actions/checkout@v4
+        with:
+          repository: 'ONLYOFFICE/build_tools'
+
+      - name: Checkout onlyoffice branding
+        uses: actions/checkout@v4
+        with:
+          repository: 'ONLYOFFICE/onlyoffice'
+          token: ${{ secrets.READ_PAT }}
+
+      - name: Run build
+        run: |
+          cd build_tools
+          python ./configure.py --module mobile --platform android --update 1 --clean 1 --qt-dir /opt/qt/5.13.2 --branding onlyoffice
+          python ./make.py
