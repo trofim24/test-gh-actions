@@ -36,7 +36,6 @@ jobs:
 
       - name: Run build
         run: |
-          ls
           cd build_tools
           python ./configure.py --module mobile --platform android --update 1 --clean 1 --qt-dir /opt/qt/5.13.2 --branding onlyoffice
           python ./make.py
