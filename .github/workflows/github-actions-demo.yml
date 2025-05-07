@@ -10,3 +10,6 @@ jobs:
     steps:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
+        with:
+          version: '5.13.2'
+          target: 'android'
