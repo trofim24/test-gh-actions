@@ -15,6 +15,7 @@ on:
 
 env:
   url: ${{github.event.inputs.url}}
+  SELECTED_URL: ${{ github.event.inputs.url == 'release' && secrets.URL_RELEASE || github.event.inputs.url == 'hotfix' && secrets.URL_HOTFIX || secrets.URL_DEVELOP }}
 
 jobs:
   puppeteer-docserver:
@@ -28,5 +29,6 @@ jobs:
             const config = {};
 
             config.api_key = 'test';
+            config.url = process.env.SELECTED_URL;
             console.log(config);
           "
