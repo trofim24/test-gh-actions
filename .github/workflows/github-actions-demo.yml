@@ -27,6 +27,13 @@ jobs:
           token: ${{ secrets.READ_PAT }}
           path: 'onlyoffice'
 
+      - name: Authenticate with GitHub
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global credential.helper store
+          echo "https://x-access-token:${{ secrets.READ_PAT }}@github.com" > ~/.git-credentials
+
       - name: Run build
         run: |
           ls
