@@ -1,0 +1,27 @@
+name: Build Document Builder
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-docbuilder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y python git
+
+      - name: Clone build_tools repository
+        run: git clone https://github.com/ONLYOFFICE/build_tools.git
+
+      - name: Run automate.py to build Document Builder
+        working-directory: build_tools/tools/linux
+        run: |
+          chmod +x automate.py
+          ./automate.py builder
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: document-builder
+          path: build_tools/out/linux_64/onlyoffice/documentbuilder/
