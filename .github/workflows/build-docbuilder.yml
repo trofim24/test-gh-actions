@@ -9,7 +9,10 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y python git
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 git
+          sudo ln -s /usr/bin/python3 /usr/bin/python || true
 
       - name: Clone build_tools repository
         run: git clone https://github.com/ONLYOFFICE/build_tools.git
