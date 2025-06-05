@@ -11,10 +11,15 @@ jobs:
       image: ubuntu:16.04
 
     steps:
-      - name: Install dependencies
+      - name: Install sudo
         run: |
           apt-get update
-          apt-get install -y python git
+          apt-get install -y sudo
+          
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python git
 
       - name: Clone build_tools repository
         run: git clone https://github.com/ONLYOFFICE/build_tools.git
