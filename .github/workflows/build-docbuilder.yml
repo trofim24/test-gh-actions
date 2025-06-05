@@ -9,7 +9,6 @@ jobs:
 
     container:
       image: ubuntu:16.04
-      options: --user root
 
     steps:
       - name: Install dependencies
