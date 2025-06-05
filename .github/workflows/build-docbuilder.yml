@@ -14,9 +14,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y python3 git
-          sudo ln -s /usr/bin/python3 /usr/bin/python || true
+          sudo apt-get install -y python git
 
       - name: Clone build_tools repository
         run: git clone https://github.com/ONLYOFFICE/build_tools.git
@@ -24,7 +22,6 @@ jobs:
       - name: Run automate.py to build Document Builder
         working-directory: build_tools/tools/linux
         run: |
-          chmod +x automate.py
           ./automate.py builder
 
       - name: Upload build artifact
